@@ -56,8 +56,6 @@
 			<version>22.11</version>
 			<classifier>javadoc</classifier>
 		</dependency>
-		
-	
 	</dependencies>
 	<repositories>
 			<repository>
