@@ -44,14 +44,11 @@ public class HtmlGenerator {
             // Close the streams
             outputStream.close();
             inputStream.close();
-
-            // Return the HTML content as a response
             return (htmlContent);
         } catch (Exception e) {
             return ("Error: " + e.getMessage());
         }
     }
-
 }
 
 
