@@ -1,5 +1,5 @@
 package com.example.service;
-
+//cc
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,15 +33,10 @@ public class HtmlGenerator {
             // Create a ByteArrayOutputStream to store the HTML content
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
              HtmlSaveOptions options = new HtmlSaveOptions();
-            // options.setImagesFolder("src/main/resources/images/");
-            // Save the document as HTML
             options.setExportImagesAsBase64(true);
             doc.save(outputStream, options);
-
-            // Get the HTML content as a string
             String htmlContent = outputStream.toString("UTF-8");
-
-            // Close the streams
+            System.err.println(htmlContent);
             outputStream.close();
             inputStream.close();
             return (htmlContent);

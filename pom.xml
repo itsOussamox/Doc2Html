@@ -44,6 +44,7 @@
 			<artifactId>pdf2dom</artifactId>
 			<version>2.0.1</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.aspose</groupId>
 			<artifactId>aspose-words</artifactId>
@@ -59,9 +60,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.ironsoftware</groupId>
-			<artifactId>ironpdf</artifactId>
-			<version>2022.11.0</version>
+			<groupId>org.xhtmlrenderer</groupId>
+			<artifactId>flying-saucer-pdf</artifactId>
+			<version>9.7.1</version>
 		</dependency>
 
 		<dependency>
@@ -69,6 +70,7 @@
 			<artifactId>slf4j-simple</artifactId>
 			<version>2.0.3</version>
 		</dependency>
+
 	</dependencies>
 	<repositories>
 			<repository>
