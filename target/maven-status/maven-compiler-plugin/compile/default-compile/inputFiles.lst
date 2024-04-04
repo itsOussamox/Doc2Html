@@ -1,4 +1,5 @@
 /home/mrx/nabady/Doc2Html/src/main/java/com/example/DemoApplication.java
 /home/mrx/nabady/Doc2Html/src/main/java/com/example/service/HtmlGenerator.java
+/home/mrx/nabady/Doc2Html/src/main/java/com/example/service/PdfConvert.java
 /home/mrx/nabady/Doc2Html/src/main/java/com/example/service/HtmlRemoveAds.java
 /home/mrx/nabady/Doc2Html/src/main/java/com/example/controller/ConvertIt.java

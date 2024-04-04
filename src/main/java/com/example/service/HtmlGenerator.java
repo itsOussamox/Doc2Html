@@ -47,10 +47,25 @@ public class HtmlGenerator {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             doc.save(outputStream, com.aspose.words.SaveFormat.PDF);
             doc.save("src/main/resources/converted.pdf");
-
             return outputStream.toByteArray();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-}}
+    }
+
+    public static byte[] iTextConvert(String htmlContent) {
+        try {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+            com.itextpdf.text.pdf.PdfWriter writer = com.itextpdf.text.pdf.PdfWriter.getInstance(document, outputStream);
+            document.open();
+            com.itextpdf.tool.xml.XMLWorkerHelper.getInstance().parseXHtml(writer, document, new ByteArrayInputStream(htmlContent.getBytes()));
+            document.close();
+            return outputStream.toByteArray();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+}

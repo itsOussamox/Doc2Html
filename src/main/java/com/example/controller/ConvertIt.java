@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import com.example.service.HtmlRemoveAds;
+import com.example.service.PdfConvert;
 import com.example.service.HtmlGenerator;
 import org.springframework.http.MediaType;
 import org.xhtmlrenderer.pdf.ITextRenderer;
@@ -45,9 +46,11 @@ public class ConvertIt {
 
     @PostMapping("/convert-html")
     public ResponseEntity<byte[]> convertToHtmlFromHtml(@RequestParam String html) throws IOException {
-        return  ResponseEntity.ok(HtmlGenerator.generatePdfFromHtml(html));
+        // return  ResponseEntity.ok(HtmlGenerator.generatePdfFromHtml(html));
+        return ResponseEntity.ok(PdfConvert.iTextConvert(html));
     }
 }
+    // @PostMapping("/convert-itext")
 
 /*
  * $file = $request->files->get('file');
