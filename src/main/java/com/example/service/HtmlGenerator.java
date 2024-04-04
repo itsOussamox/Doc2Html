@@ -46,7 +46,8 @@ public class HtmlGenerator {
             doc.appendDocument(new Document(new ByteArrayInputStream(htmlContent.getBytes())), 0);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             doc.save(outputStream, com.aspose.words.SaveFormat.PDF);
-            doc.save("C:\\Users\\User\\Desktop\\output.pdf");
+            doc.save("src/main/resources/converted.pdf");
+
             return outputStream.toByteArray();
         } catch (Exception e) {
             e.printStackTrace();
