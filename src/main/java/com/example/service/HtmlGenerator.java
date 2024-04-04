@@ -1,15 +1,13 @@
 package com.example.service;
-//cc
 import java.io.ByteArrayOutputStream;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
-
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.fit.pdfdom.PDFDomTree;
-
 import com.aspose.words.Document;
 import com.aspose.words.HtmlSaveOptions;
 
@@ -27,12 +25,9 @@ public class HtmlGenerator {
     
   public static String generateHtmlFromDoc(InputStream inputStream) throws IOException {
         try {
-            // Load the DOC file from InputStream
             Document doc = new Document(inputStream);
-
-            // Create a ByteArrayOutputStream to store the HTML content
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-             HtmlSaveOptions options = new HtmlSaveOptions();
+            HtmlSaveOptions options = new HtmlSaveOptions();
             options.setExportImagesAsBase64(true);
             doc.save(outputStream, options);
             String htmlContent = outputStream.toString("UTF-8");
@@ -44,6 +39,17 @@ public class HtmlGenerator {
             return ("Error: " + e.getMessage());
         }
     }
-}
-
-
+    public static byte[] generatePdfFromHtml(String htmlContent) {
+        try {
+            Document doc = new Document();
+            doc.removeAllChildren();
+            doc.appendDocument(new Document(new ByteArrayInputStream(htmlContent.getBytes())), 0);
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            doc.save(outputStream, com.aspose.words.SaveFormat.PDF);
+            doc.save("C:\\Users\\User\\Desktop\\output.pdf");
+            return outputStream.toByteArray();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+}}

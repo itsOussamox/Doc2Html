@@ -27,11 +27,7 @@ public class ConvertIt {
     }
 
     @PostMapping("/convert-doc")
-    public ResponseEntity<String> convertToHtmlFromWord() throws IOException {//@RequestParam String form
-        // System.err.println("form :>>>>>>>>>>>>>>>>>>>> " + form);
-        // if (form == null || form != "cnss") {
-        //     throw new IllegalArgumentException("form error");
-        // }
+    public ResponseEntity<String> convertToHtmlFromWord() throws IOException {
         FileInputStream inputStream = new FileInputStream("src/main/resources/cnss.doc");
         String html = HtmlGenerator.generateHtmlFromDoc(inputStream);
         html = HtmlRemoveAds.getCleanHtml(html);
@@ -45,29 +41,11 @@ public class ConvertIt {
     // return
     // ResponseEntity.ok().contentType(MediaType.APPLICATION_PDF).body(bytes);
     // }
+
+
     @PostMapping("/convert-html")
     public ResponseEntity<byte[]> convertToHtmlFromHtml(@RequestParam String html) throws IOException {
-        try {
-            ITextRenderer renderer = new ITextRenderer();
-            if (html == null) {
-                throw new IllegalArgumentException("html is null");
-            }
-            renderer.setDocumentFromString(html);
-            renderer.layout();
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            renderer.createPDF(baos);
-            return ResponseEntity.ok()
-                    .contentType(MediaType.APPLICATION_PDF)
-                    .header("Expires", "0")
-                    .header("Cache-Control", "must-revalidate, post-check=0, pre-check=0")
-                    .header("Pragma", "public")
-                    .contentLength(baos.size())
-                    .body(baos.toByteArray());
-        } catch (Exception e) {
-        }
-        System.err.println("error while converting html to pdf error: ");
-        System.err.println("html sent : " + html);
-        return ResponseEntity.badRequest().body(null);
+        return  ResponseEntity.ok(HtmlGenerator.generatePdfFromHtml(html));
     }
 }
 
